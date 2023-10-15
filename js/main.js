@@ -10,6 +10,7 @@ const btnAdd = $.querySelector('.btn_send');
 const btnTodo = $.querySelector('.btn_add');
 const lists = $.querySelector('.list');
 let boxs = $.querySelectorAll('.box');
+let index = 0;
 
 //btn add todo
 btnTodo.addEventListener('click',()=>{
@@ -37,6 +38,7 @@ input.addEventListener('keyup',(e)=>{
 
 //function for add list
 const addItem = ()=>{
+  index++;
   let inputValue = input.value;
   let li = document.createElement('li');
   let i = document.createElement('i');
@@ -44,7 +46,9 @@ const addItem = ()=>{
   li.textContent = inputValue;
   li.className = 'bg-black px-[10px] rounded-md capitalize flex justify-between items-center gap-[15px] text-white ';
   li.setAttribute('draggable',true);
+  
   lists.append(li);
+  li.setAttribute('id', 'A'+ index);
   li.append(i);
   input.value = '';
 }
@@ -64,7 +68,7 @@ btnAdd.addEventListener('click',()=>{
 
 //drag-start
 lists.addEventListener('dragstart',(e)=>{
-  e.dataTransfer.setData('el',e.target.className);
+  e.dataTransfer.setData('el',e.target.id);
 });
 
 //remove li in list
@@ -79,8 +83,7 @@ lists.addEventListener('click',(e)=>{
 boxs.forEach(value=>{
   value.addEventListener('drop',(e)=>{
     let dataObj = e.dataTransfer.getData('el');
-    let addObjC = document.getElementsByClassName(dataObj);
-    console.log(addObjC);
+    let addObjC = document.getElementById(dataObj);
     value.append(addObjC);
   })
 });
