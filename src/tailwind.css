@@ -17,12 +17,16 @@
 @layer utilities{
 
   .modal_cont{
-    @apply max-w-full h-screen bg-black bg-opacity-50  justify-center items-center hidden
+    @apply max-w-full h-screen bg-black bg-opacity-50  justify-center items-center relative hidden 
   }
 
 
   .modal{
-    @apply w-[470px] h-auto px-[15px] py-[15px] bg-slate-600 rounded-lg
+    @apply w-[470px] h-auto px-[15px] py-[15px] bg-slate-600 rounded-lg absolute translate-y-0 transition-all duration-700 delay-700
+  }
+
+  .modal.show{
+    @apply translate-y-1
   }
 
 
@@ -77,38 +81,39 @@
 
 
   .wrapper{
-    @apply w-[700px] max-w-[800px] px-[15px] py-[20px] bg-rose-400 rounded-lg
+    @apply w-[700px] max-w-[800px] px-[15px] py-[20px] bg-slate-600 rounded-lg
   }
 
 
   .header{
-    @apply w-full flex justify-between border-b-2 pb-[10px] border-black
+    @apply w-full flex justify-between border-b-2 pb-[10px] border-white
   }
 
   .title{
-    @apply capitalize
+    @apply capitalize text-white
   }
 
 
   .body{
-    @apply w-full flex h-[300px] bg-lime-300 mt-[10px]
+    @apply w-full flex h-[300px] mt-[10px]
   }
 
   .box{
-    @apply bg-slate-500 w-[300px] border-e pl-[10px]
+    @apply  w-[300px] border-e pl-[10px]
+  }
+
+  .box:last-child{
+    @apply border-none
   }
 
   .btn_add{
-    @apply border-black border-solid border px-[10px] mt-[10px] cursor-pointer
+    @apply border-white border-solid border px-[10px] mt-[10px] cursor-pointer text-white rounded-xl
   }
 
   .list{
     @apply w-full flex flex-col gap-[10px] items-start mt-[20px]
   }
 
-  .list-item{
-    @apply bg-blue-500 px-[10px] rounded-md capitalize
-  }
 }
 
 
