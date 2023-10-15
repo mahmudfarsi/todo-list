@@ -1,6 +1,7 @@
 const $ = document;
 // modal
 const modal = $.querySelector('.modal_cont');
+const modalBox = $.querySelector('.modal')
 const close = $.querySelector('.fa-xmark');
 const input = $.querySelector('#input');
 const btnAdd = $.querySelector('.btn_send');
@@ -12,6 +13,7 @@ let boxs = $.querySelectorAll('.box');
 
 //btn add todo
 btnTodo.addEventListener('click',()=>{
+  modalBox.classList.add('show');
   modal.style.display = 'flex';
   input.focus();
 });
@@ -30,7 +32,8 @@ input.addEventListener('keyup',(e)=>{
   addItem();
   modal.style.display = 'none';
  }
-})
+});
+
 
 //function for add list
 const addItem = ()=>{
@@ -39,7 +42,7 @@ const addItem = ()=>{
   let i = document.createElement('i');
   i.className = 'fa-solid fa-xmark';
   li.textContent = inputValue;
-  li.className = 'bg-blue-500 px-[10px] rounded-md capitalize flex justify-between items-center gap-[15px]';
+  li.className = 'bg-black px-[10px] rounded-md capitalize flex justify-between items-center gap-[15px] text-white ';
   li.setAttribute('draggable',true);
   lists.append(li);
   li.append(i);
